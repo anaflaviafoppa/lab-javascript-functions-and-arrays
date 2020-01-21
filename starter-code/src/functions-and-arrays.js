@@ -103,19 +103,20 @@ const wordsUnique = [
   'bring'
 ];
 
-const uniquifyArray = arr => {
+const uniquifyArray =(arr) => {
   if (arr.length === 0) {
     return [];
   } else if (arr.length != 0) {
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length; j++) {
-        if (arr[i] === arr[j] && j !== i) {
-          arr.splice(arr.indexOf(arr[j]), 1);
+    var uniquifyArray = arr;
+    for (let i = 0; i < uniquifyArray.length; i++) {
+      for (let j = 0; j < uniquifyArray.length; j++) {
+        if (uniquifyArray[i] === uniquifyArray[j] && j !== i) {
+          uniquifyArray.splice(uniquifyArray.indexOf(uniquifyArray[j]), 1);
           continue;
         }
       }
     }
-    return arr;
+    return uniquifyArray;
   }
 };
 
@@ -165,7 +166,15 @@ const wordsCount = [
   'matter'
 ];
 
-const howManyTimes = () => {};
+const howManyTimes = (arr, word) => {
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      counter++;
+    }
+  }
+  return counter;
+};
 
 // Iteration #8: Bonus
 
@@ -191,3 +200,16 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+const greatestProduct = arr => {
+  var greatest = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j + 3 < arr[i].length; j++) {
+      var multiple = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
+      greatest.push(multiple);
+    }
+  }
+  return Math.max(...greatest);
+};
+
+greatestProduct(matrix);
