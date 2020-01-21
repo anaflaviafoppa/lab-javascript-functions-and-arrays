@@ -1,15 +1,64 @@
 // Iteration #1: Find the maximum
+const maxOfTwoNumbers = (a, b) => {
+  if (a > b) {
+    return a;
+  } else {
+    return b;
+  }
+};
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+
+const findLongestWord = arr => {
+  let word = '';
+  if (arr.length === 0) {
+    return null;
+  } else if (arr.length != 0) {
+    for (let i = 0; i < arr.length; i++) {
+      if (word.length < arr[i].length) {
+        word = arr[i];
+      }
+    }
+    return word;
+  }
+};
+
+findLongestWord(words);
 
 // Iteration #3: Calculate the sum
 
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
+const sumArray = arr => {
+  var sumNumbers = null;
+  if (arr.length == 0) {
+    return 0;
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      sumNumbers += arr[i];
+    }
+    return sumNumbers;
+  }
+};
+
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+const averageNumbers = arr => {
+  var sumNumbers = null;
+  if (arr.length == 0) {
+    return null;
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      sumNumbers += arr[i];
+    }
+    return sumNumbers / arr.length;
+  }
+};
+
+averageNumbers(numbersAvg);
 
 // Level 2: Array of strings
 const wordsArr = [
@@ -25,6 +74,20 @@ const wordsArr = [
   'palace'
 ];
 
+const averageWordLength = arr => {
+  var sumNumbers = null;
+  if (arr.length == 0) {
+    return null;
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      sumNumbers += arr[i].length;
+    }
+    return sumNumbers / arr.length;
+  }
+};
+
+averageWordLength(wordsArr);
+
 // Iteration #5: Unique arrays
 const wordsUnique = [
   'crab',
@@ -39,6 +102,24 @@ const wordsUnique = [
   'simple',
   'bring'
 ];
+
+const uniquifyArray = arr => {
+  if (arr.length === 0) {
+    return [];
+  } else if (arr.length != 0) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[i] === arr[j] && j !== i) {
+          arr.splice(arr.indexOf(arr[j]), 1);
+          continue;
+        }
+      }
+    }
+    return arr;
+  }
+};
+
+uniquifyArray(wordsRepeat);
 
 // Iteration #6: Find elements
 const wordsFind = [
