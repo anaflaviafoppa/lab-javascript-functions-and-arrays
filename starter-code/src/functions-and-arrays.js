@@ -103,7 +103,7 @@ const wordsUnique = [
   'bring'
 ];
 
-const uniquifyArray =(arr) => {
+const uniquifyArray = arr => {
   if (arr.length === 0) {
     return [];
   } else if (arr.length != 0) {
@@ -112,6 +112,7 @@ const uniquifyArray =(arr) => {
       for (let j = 0; j < uniquifyArray.length; j++) {
         if (uniquifyArray[i] === uniquifyArray[j] && j !== i) {
           uniquifyArray.splice(uniquifyArray.indexOf(uniquifyArray[j]), 1);
+
           continue;
         }
       }
@@ -120,7 +121,7 @@ const uniquifyArray =(arr) => {
   }
 };
 
-uniquifyArray(wordsRepeat);
+uniquifyArray(wordsUnique);
 
 // Iteration #6: Find elements
 const wordsFind = [
@@ -134,7 +135,7 @@ const wordsFind = [
   'disobedience'
 ];
 
-const doesWordExist = (arr, word) => {
+function doesWordExist(arr, word) {
   if (arr.length === 0) {
     return false;
   } else {
@@ -147,7 +148,7 @@ const doesWordExist = (arr, word) => {
       }
     }
   }
-};
+}
 
 doesWordExist(wordsFind, 'truth');
 
@@ -166,7 +167,7 @@ const wordsCount = [
   'matter'
 ];
 
-const howManyTimes = (arr, word) => {
+function howManyTimes(arr, word) {
   let counter = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === word) {
@@ -174,7 +175,7 @@ const howManyTimes = (arr, word) => {
     }
   }
   return counter;
-};
+}
 
 // Iteration #8: Bonus
 
@@ -201,15 +202,22 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-const greatestProduct = arr => {
+function greatestProduct(arr) {
   var greatest = [];
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j + 3 < arr[i].length; j++) {
-      var multiple = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
-      greatest.push(multiple);
+      var multiple1 = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
+      greatest.push(multiple1);
+    }
+  }
+
+  for (let k = 0; k + 3 < arr.length; k++) {
+    for (let l = 0; l < arr.length; l++) {
+      var multiple2 = arr[k][l] * arr[k + 1][l] * arr[k + 2][l] * arr[k + 3][l];
+      greatest.push(multiple2);
     }
   }
   return Math.max(...greatest);
-};
+}
 
 greatestProduct(matrix);
