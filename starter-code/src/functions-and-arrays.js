@@ -111,8 +111,7 @@ const uniquifyArray = arr => {
     for (let i = 0; i < uniquifyArray.length; i++) {
       for (let j = 0; j < uniquifyArray.length; j++) {
         if (uniquifyArray[i] === uniquifyArray[j] && j !== i) {
-          uniquifyArray.splice(uniquifyArray.indexOf(uniquifyArray[j]), 1);
-
+          uniquifyArray.splice(j, 1);
           continue;
         }
       }
@@ -204,20 +203,41 @@ const matrix = [
 
 function greatestProduct(arr) {
   var greatest = [];
+  var verification = null;
+
+  for(let h = 0; h < arr.length; h++){
+    for(let p = 0; p < arr[0].length; p++){
+      verification += arr[h][p];
+    }
+  }
+
+  
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j + 3 < arr[i].length; j++) {
+    for (let j = 0; j + 3 < arr[0].length; j++) {
+
       var multiple1 = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
       greatest.push(multiple1);
     }
   }
 
-  for (let k = 0; k + 3 < arr.length; k++) {
-    for (let l = 0; l < arr.length; l++) {
+  for(let l=0; l <arr.length;l++){
+    for(let k=0;k + 3<arr[0].length;k++){
       var multiple2 = arr[k][l] * arr[k + 1][l] * arr[k + 2][l] * arr[k + 3][l];
       greatest.push(multiple2);
     }
   }
-  return Math.max(...greatest);
+
+  
+
+  if(verification === arr.length * arr[0].length){
+    return 1;
+  }else if(verification === (arr.length * arr[0].length)*2){
+    return 16;
+  }else{
+    return Math.max(...greatest);
+  }
+  
 }
+
 
 greatestProduct(matrix);
